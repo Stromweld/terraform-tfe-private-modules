@@ -21,7 +21,7 @@ resource "tfe_oauth_client" "test-oauth-client" {
   service_provider = "github"
 }
 
-module "repositories" {
+module "tfc-private-module" {
   source  = "app.terraform.io/Stromweld/private-modules/tfe"
   version = ">= 1.0.0"
 
