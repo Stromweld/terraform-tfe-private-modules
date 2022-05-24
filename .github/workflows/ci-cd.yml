@@ -1,0 +1,28 @@
+---
+on:
+  pull_request:
+
+jobs:
+  markdownlint:
+    uses: Stromweld/github-workflows/.github/workflows/markdownlint.yml@main
+
+  yamllint:
+    uses: Stromweld/github-workflows/.github/workflows/yamllint.yml@main
+
+  terraformlint:
+    uses: Stromweld/github-workflows/.github/workflows/terraform-lint.yml@main
+
+  check:
+    if: always()
+    needs:
+      - markdownlint
+      - yamllint
+      - terraformlint
+    runs-on: Ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@main
+        with:
+          allowed-failures:
+          allowed-skips:
+          jobs: ${{ toJSON(needs) }}
