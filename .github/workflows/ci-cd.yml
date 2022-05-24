@@ -9,6 +9,9 @@ jobs:
   yamllint:
     uses: Stromweld/github-workflows/.github/workflows/yamllint.yml@main
 
+  jsonlint:
+    uses: Stromweld/github-workflows/.github/workflows/jsonlint.yml@main
+
   terraformlint:
     uses: Stromweld/github-workflows/.github/workflows/terraform-lint.yml@main
 
@@ -17,6 +20,7 @@ jobs:
     needs:
       - markdownlint
       - yamllint
+      - jsonlint
       - terraformlint
     runs-on: Ubuntu-latest
     steps:

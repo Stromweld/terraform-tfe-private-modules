@@ -1,4 +1,4 @@
-# terraform-github-repositories
+# terraform-tfe-private-modules
 
 Terraform module for Terraform Cloud Private Modules
 
