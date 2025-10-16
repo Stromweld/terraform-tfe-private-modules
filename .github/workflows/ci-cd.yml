@@ -3,30 +3,30 @@ on:
   pull_request:
 
 jobs:
-  markdownlint:
-    uses: Stromweld/github-workflows/.github/workflows/markdownlint.yml@main
+  markdown-lint:
+    uses: Stromweld/github-workflows/.github/workflows/markdown-lint.yml@main
 
-  yamllint:
-    uses: Stromweld/github-workflows/.github/workflows/yamllint.yml@main
+  yaml-lint:
+    uses: Stromweld/github-workflows/.github/workflows/yaml-lint.yml@main
 
-  jsonlint:
-    uses: Stromweld/github-workflows/.github/workflows/jsonlint.yml@main
+  json-lint:
+    uses: Stromweld/github-workflows/.github/workflows/json-lint.yml@main
 
-  terraformlint:
+  terraform-lint:
     uses: Stromweld/github-workflows/.github/workflows/terraform-lint.yml@main
     secrets: inherit
 
   check:
     if: always()
     needs:
-      - markdownlint
-      - yamllint
-      - jsonlint
-      - terraformlint
+      - markdown-lint
+      - yaml-lint
+      - json-lint
+      - terraform-lint
     runs-on: Ubuntu-latest
     steps:
       - name: Decide whether the needed jobs succeeded or failed
-        uses: re-actors/alls-green@main
+        uses: re-actors/alls-green@release/v1
         with:
           allowed-failures:
           allowed-skips:
