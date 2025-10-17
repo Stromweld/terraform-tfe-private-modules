@@ -10,7 +10,7 @@ variable "oauth_token_id" {
   type        = string
   description = "Token ID of the VCS Connection (OAuth Connection Token) to use."
 }
-varable "tests_enabled" {
+variable "tests_enabled" {
   type        = bool
   default     = false
   description = "Specifies whether tests run for the registry module. Tests are only supported for branch-based publishing."
