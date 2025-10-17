@@ -16,7 +16,7 @@ resource "tfe_registry_module" "tf_module" {
   registry_name   = null # (Optional) Whether the registry module is private or public. It can be used if module_provider is set.
   initial_version = null # (Optional) This specifies the initial version for a branch based module. It can be used if vcs_repo.branch is set. If it is omitted, the initial modules version will default to 0.0.0.
   dynamic "test_config" {
-    for_each = var.tests_enabled ? var.tests_enabled : {}
+    for_each = var.tests_enabled ? [var.tests_enabled] : {}
     content {
       tests_enabled = var.tests_enabled # (Optional) Specifies whether tests run for the registry module. Tests are only supported for branch-based publishing.
     }
